@@ -42,8 +42,12 @@
 - Postgres database set up.
 - Project schema:
     - Created the necessary migration files for creating tables.
-    - Foreign keys added.
+    - Created tables: users, comments, posts, and likes.
+    - Foreign keys added according to the diagram below.
     - All columns that are foreign keys have a corresponding index.
+
+Diagram used for the database structure of this project:
+![diagram](https://github.com/microverseinc/curriculum-rails/blob/main/blog-app/images/blog_app_erd_v1_1.png?raw=true)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
