@@ -7,10 +7,10 @@ class Post < ApplicationRecord
   after_create :update_posts_counter
 
   def update_posts_counter
-    self.user.posts_counter = self.user.posts.count
+    user.posts_counter = user.posts.count
   end
 
   def recent_comments
-    self.comments.first(5)
+    comments.first(5)
   end
 end
