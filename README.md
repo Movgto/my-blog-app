@@ -45,6 +45,9 @@
     - Created tables: users, comments, posts, and likes.
     - Foreign keys added according to the diagram below.
     - All columns that are foreign keys have a corresponding index.
+- Created model classes for all entities as shown in the ERD diagram.
+- Set up associations between models.
+- Data can be inserted using models.
 
 Diagram used for the database structure of this project:
 ![diagram](https://github.com/microverseinc/curriculum-rails/blob/main/blog-app/images/blog_app_erd_v1_1.png?raw=true)
