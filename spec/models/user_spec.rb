@@ -8,7 +8,7 @@ describe User, type: :model do
     subject.save
     post.save
   end
-  
+
   it 'should pass validations with a valid name' do
     expect(subject).to be_valid
   end

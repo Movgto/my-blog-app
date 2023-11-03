@@ -8,7 +8,7 @@ describe Post, type: :model do
     subject.save
     post.save
   end
-  
+
   it 'title should be present' do
     post.title = nil
     expect(post).to_not be_valid
@@ -16,7 +16,7 @@ describe Post, type: :model do
 
   it 'title should not exceed 250 characters' do
     invalid_title = ''
-    for a in 1..252 do
+    (1..252).each do |_|
       invalid_title += 'a'
     end
     post.title = invalid_title
