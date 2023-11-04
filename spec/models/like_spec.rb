@@ -4,8 +4,8 @@ describe Like, type: :model do
   subject { User.new(name: 'Tommy') }
   let(:user2) { User.new(name: 'Jimmy') }
   let(:post) { Post.new(author: subject, title: 'Post 1', text: 'Post content') }
-  let(:comment) { Comment.new(post: post, user: subject, text: 'This is a comment') }
-  let(:like) { Like.new(post: post, user: user2) }
+  let(:comment) { Comment.new(post:, user: subject, text: 'This is a comment') }
+  let(:like) { Like.new(post:, user: user2) }
 
   before do
     subject.save
