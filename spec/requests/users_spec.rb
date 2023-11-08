@@ -1,17 +1,45 @@
 require 'rails_helper'
 
-describe 'GET /show' do
+describe 'GET /index' do
   it 'returns a successful response' do
-    User.create!(name: 'Timmy')
     get users_url
     puts response.status
     expect(response).to be_successful
   end
 
   it 'renders a correct template' do
-    User.create!(name: 'Timmy')
     get users_url
     puts response.status
-    expect(response.body).to match(/This is a list of users/i)
+    template = File.read('app/views/users/index.html.erb')
+    expect(response.body).to match(/#{template}/)
+  end
+
+  it 'includes the correct placeholder' do
+    get users_url
+    puts response.status
+    placeholder = 'This is a list of users'
+    expect(response.body).to match(/#{placeholder}/)
+  end
+end
+
+describe 'GET /show' do
+  it 'returns a successful response' do
+    get "/users/1"
+    puts response.status
+    expect(response).to be_successful
+  end
+
+  it 'renders a correct template' do
+    get "/users/1"
+    puts response.status
+    template = File.read('app/views/users/show.html.erb')
+    expect(response.body).to match(/#{template}/)
+  end
+
+  it 'includes the correct placeholder' do
+    get "/users/1"
+    puts response.status
+    placeholder = 'This is an user'
+    expect(response.body).to match(/#{placeholder}/)
   end
 end
