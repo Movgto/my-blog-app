@@ -19,8 +19,13 @@ class Post < ApplicationRecord
   after_create :update_posts_counter
 
   def set_defaults
-    self.likes_counter ||= 0
-    self.comments_counter ||= 0
+    if likes.count >= 0 && comments.count >= 0
+      self.likes_counter = likes.count
+      self.comments_counter = comments.count
+    else
+      self.likes_counter = 0
+      self.comments_counter = 0
+    end
   end
 
   def update_posts_counter
@@ -28,6 +33,6 @@ class Post < ApplicationRecord
   end
 
   def recent_comments
-    comments.order('created_at DESC').limit(5)
+    comments.order('created_at ASC').limit(5)
   end
 end

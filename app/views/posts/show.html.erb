@@ -1,1 +1,10 @@
-<h2>This is a post for a given user</h2>
+<div class='post-ctr'>
+    <%= render partial: 'partials/post', locals: { post: @post, short: false } %>
+    <% if @post.comments.length > 0 %>
+      <div class='comments'>
+        <% @post.comments.each do |comment| %>
+          <%= render partial: 'partials/comment', locals: { comment: comment } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
