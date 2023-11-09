@@ -12,11 +12,7 @@ class User < ApplicationRecord
   after_initialize :set_defaults
 
   def set_defaults
-    if (posts.count >= 0)
-    self.posts_counter = posts.count
-    else
-      self.posts_counter = 0
-    end
+    self.posts_counter = [posts.count, 0].max
   end
 
   def recent_posts
