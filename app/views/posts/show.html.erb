@@ -1,5 +1,7 @@
 <div class='post-ctr'>
     <%= render partial: 'partials/post', locals: { post: @post, short: false } %>
+    <%= button_to "Like", "/posts/#{@post.id}/like", remote: true %>
+    <small><%= flash[:notice] %></small>
     <% if @post.comments.length > 0 %>
       <div class='comments'>
         <% @post.comments.each do |comment| %>
