@@ -45,4 +45,12 @@ class PostsController < ApplicationController
     end
     render :show
   end
+
+  def comment
+    @post = Post.find(params[:id])
+    comment = Comment.new(user: current_user, post: @post, text: params[:comment][:text])
+    if comment.save
+      redirect_to "/users/#{current_user.id}/posts/#{@post.id}"
+    end
+  end
 end

@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get '/posts/new', to: 'posts#new'
   post '/posts', to: 'posts#create'
   post '/posts/:id/like', to: 'posts#like'
+  post '/posts/:id/comment', to: 'posts#comment'
 end
