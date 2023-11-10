@@ -23,12 +23,12 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html do
         if post.save
-          puts "Success"
-          flash[:success] = "Post created successfully"
+          puts 'Success'
+          flash[:success] = 'Post created successfully'
           redirect_to "/users/#{current_user.id}/posts"
         else
-          puts "error", post.errors.full_messages
-          flash.now[:error] = "Error: Post could not be created"
+          puts 'error', post.errors.full_messages
+          flash.now[:error] = 'Error: Post could not be created'
           render :new
         end
       end
@@ -39,9 +39,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     like = Like.new(user: current_user, post: @post)
     if @post.likes.find_by(user_id: current_user.id)
-      flash[:notice] = "You already like this post"
+      flash[:notice] = 'You already like this post'
     elsif like.save
-      flash[:success] = "You like this post"
+      flash[:success] = 'You like this post'
     end
     render :show
   end
@@ -49,8 +49,8 @@ class PostsController < ApplicationController
   def comment
     @post = Post.find(params[:id])
     comment = Comment.new(user: current_user, post: @post, text: params[:comment][:text])
-    if comment.save
-      redirect_to "/users/#{current_user.id}/posts/#{@post.id}"
-    end
+    return unless comment.save
+
+    redirect_to "/users/#{current_user.id}/posts/#{@post.id}"
   end
 end
