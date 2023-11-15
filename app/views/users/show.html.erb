@@ -6,10 +6,10 @@
 </div>
 
 <div class='feed'>
-  <% @user.recent_posts.each do |post| %>
+  <% @user.recent_posts.includes(:user).each do |post| %>
     <%= render partial: 'partials/post', locals: { post: post, short: true } %>
   <% end %>
-  <% if @user.posts.length > 0 %>
+  <% if Post.includes(:user).where("author_id = #{@user.id}").references(:user).length > 0 %>
     <%= link_to "/users/#{@user.id}/posts" do %>
       <button type='button'>See all posts</button>
     <% end %>
