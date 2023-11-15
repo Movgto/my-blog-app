@@ -19,9 +19,11 @@ class Post < ApplicationRecord
   after_create :update_posts_counter
 
   def set_defaults
-    if likes.count >= 0 && comments.count >= 0
-      self.likes_counter = likes.count
-      self.comments_counter = comments.count
+    likes_count = Like.includes(:post).where(post: self).references(:post).count
+    comments_count = Comment.includes(:post).where(post: self).references(:post).count
+    if likes_count >= 0 && comments_count >= 0
+      self.likes_counter = likes_count
+      self.comments_counter = comments_count
     else
       self.likes_counter = 0
       self.comments_counter = 0
