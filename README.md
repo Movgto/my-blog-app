@@ -85,6 +85,12 @@ cd my-blog-app
 - [LinkedIn](https://www.linkedin.com/in/gumaro-monroy-vazquez-1705aa165/)
 - [Wellfound](https://wellfound.com/u/maro-monroy)
 
+
+👤 **Mohammad Anwar Hussaini**
+
+- GitHub: [@M-Anwar-Hussaini](https://github.com/M-Anwar-Hussaini/)
+- LinkedIn: [Anwar Hussaini](https://www.linkedin.com/in/anwar-hussaini/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
