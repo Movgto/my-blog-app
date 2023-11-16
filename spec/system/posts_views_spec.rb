@@ -24,7 +24,6 @@ describe 'posts views' do
     like3.save
   end
 
-
   context 'index', type: :system do
     let(:path) { "/users/#{user.id}/posts" }
 
@@ -43,7 +42,6 @@ describe 'posts views' do
 
       expect(page).to have_content(user.name)
     end
-
 
     it 'can see number of posts of the user' do
       visit path
@@ -103,7 +101,6 @@ describe 'posts views' do
       end
     end
   end
-
 
   context 'show' do
     let(:path) { "/users/#{user.id}/posts/#{post1.id}" }
