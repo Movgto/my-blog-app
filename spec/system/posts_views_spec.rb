@@ -24,5 +24,50 @@ describe 'posts views' do
     like3.save 
   end
 
-  
+
+  context 'show' do
+    let(:path) { "/users/#{user.id}/posts/#{post1.id}" }
+
+    it 'can see the post\'s title' do
+      visit path
+
+      expect(page).to have_content(post1.title)
+    end
+
+    it 'can see the user profile picture' do
+      visit path
+
+      expect(page).to have_content(user.name)
+    end
+
+    it 'can see how many comments it has' do
+      visit path
+
+      expect(page).to have_content("Comments: #{post1.comments_counter}")
+    end
+
+    it 'can see how many likes it has' do
+      visit path
+
+      expect(page).to have_content("Likes: #{post1.likes_counter}")
+    end
+
+    it 'can see how many likes it has' do
+      visit path
+
+      expect(page).to have_content(post1.text)
+    end
+
+    it 'can see username of each commentor' do
+      visit path
+
+      expect(page).to have_content(comment1.user.name)
+    end
+
+    it 'can see the comment each commentor left' do
+      visit path
+
+      expect(page).to have_content(comment1.text)
+    end
+  end
 end
