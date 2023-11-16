@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   post '/posts', to: 'posts#create'
   post '/posts/:id/like', to: 'posts#like'
   post '/posts/:id/comment', to: 'posts#comment'
+  post '/posts/:id/delete', to: 'posts#delete'
+  post '/comments/:id/delete', to: 'posts#delete_comment'
 end
