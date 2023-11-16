@@ -59,6 +59,8 @@ group :development, :test do
    gem 'selenium-webdriver'
 
    gem 'devise'
+
+   gem 'cancancan'
 end
 
 group :development do
