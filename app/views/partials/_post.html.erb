@@ -1,4 +1,7 @@
 <div class='post-body'>
+  <% if can?(:manage, post) || current_user.role == 'admin' %>
+    <%= button_to 'Delete', "/posts/#{post.id}/delete" %>
+  <% end %>
   <div class='post-header'>
     <h2><%= "#{post.title} by #{post.author.name}" %></h2>
   </div>
