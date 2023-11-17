@@ -1,5 +1,7 @@
 <%= render partial: 'partials/user_card', locals: { user: @user } %>
-
+<% if @current_user.id == @user.id %>
+  <%= link_to "New Post", "/posts/new" %>
+<% end %>
 <% @posts.each do |post| %>
   <div class='post-ctr'>
     <%= render partial: 'partials/post', locals: { post: post, short: true } %>
