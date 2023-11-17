@@ -43,7 +43,6 @@ describe 'posts views' do
       expect(page).to have_content(user.name)
     end
 
-
     it 'can see number of posts of the user' do
       visit path
       puts user.posts_counter
