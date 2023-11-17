@@ -53,12 +53,12 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
   gem 'rspec-rails'
 
-   # Capybara, the library that allows us to interact with the browser using Ruby
-   gem 'capybara'
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
 
-   gem 'selenium-webdriver'
+  gem 'selenium-webdriver'
 
-   gem 'devise'
+  gem 'devise'
 end
 
 group :development do
