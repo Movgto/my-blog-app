@@ -25,7 +25,7 @@ describe 'posts show', type: :system do
     like2.save
     like3.save
   end
-  
+
 
   it 'can see the post\'s title' do
     visit path
