@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   def set_defaults
     self.posts_counter = Post.includes(:user).where(user: self).references(:user).count
+    self.role ||= 'user'
   end
 
   def recent_posts
