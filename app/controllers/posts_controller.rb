@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   layout 'users'
 
   def index
     @user = User.find(params[:id])
     @posts = Post.includes(:user).where("author_id = #{@user.id}").references(:user)
-    @current_user = current_user
   end
 
   def show
