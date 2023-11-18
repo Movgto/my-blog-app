@@ -7,6 +7,13 @@
     <%= stylesheet_link_tag 'style' %>
   </head>
   <body>
+    <header>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete  %>
+      <h3>Hello, <%= current_user.name %>!</h3>
+      <% unless current_page?(users_path) || current_page?('/') %>
+        <%= link_to 'Home', '/' %>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

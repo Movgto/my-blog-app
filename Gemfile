@@ -57,6 +57,10 @@ group :development, :test do
   gem 'capybara'
 
   gem 'selenium-webdriver'
+
+  gem 'devise'
+
+  gem 'cancancan'
 end
 
 group :development do

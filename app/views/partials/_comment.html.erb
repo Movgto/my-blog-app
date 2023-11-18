@@ -1,4 +1,5 @@
 <div class='comment'>
+  <%= button_to 'Delete', "/comments/#{comment.id}/delete" if can?(:delete, comment) || current_user.role == 'admin' %>
   <h2><%= User.find(comment["user_id"]).name %>: </h2>
   <p><%= comment.text %></p>
   <p><%= comment.created_at.strftime('%a %d %b %Y') %></p>

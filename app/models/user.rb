@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable
   has_many :comments
   has_many :likes
   has_many :posts, class_name: 'Post', foreign_key: 'author_id'
@@ -12,7 +16,8 @@ class User < ApplicationRecord
   after_initialize :set_defaults
 
   def set_defaults
-    self.posts_counter = [posts.count, 0].max
+    self.posts_counter = Post.includes(:user).where(user: self).references(:user).count
+    self.role ||= 'user'
   end
 
   def recent_posts

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   layout 'users'
 
   def index
@@ -59,9 +60,19 @@ class PostsController < ApplicationController
     comment = Comment.new(user: current_user, post: @post, text: params[:comment][:text])
     return unless comment.save
 
-    respond_to do |format|
-      format.html { redirect_to "/users/#{current_user.id}/posts/#{@post.id}" }
-      format.json { render json: @post }
-    end
+    redirect_to "/users/#{current_user.id}/posts/#{@post.id}"
+  end
+
+  def delete
+    post = Post.find(params[:id])
+    post.destroy
+
+    redirect_to "/users/#{post.author_id}"
+  end
+
+  def delete_comment
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to "/users/#{current_user.id}/posts"
   end
 end

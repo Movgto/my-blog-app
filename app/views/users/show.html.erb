@@ -5,6 +5,10 @@
   <p><%= @user.bio %></p>
 </div>
 
+<% if current_user == @user %>
+  <%= link_to "New Post", "/posts/new" %>
+<% end %>
+
 <div class='feed'>
   <% @user.recent_posts.includes(:user).each do |post| %>
     <%= render partial: 'partials/post', locals: { post: post, short: true } %>
