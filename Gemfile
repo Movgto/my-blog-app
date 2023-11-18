@@ -55,7 +55,10 @@ group :development, :test do
 
   # Capybara, the library that allows us to interact with the browser using Ruby
   gem 'capybara'
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
 
+  gem 'selenium-webdriver'
   gem 'selenium-webdriver'
 
   gem 'devise'
