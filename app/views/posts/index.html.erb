@@ -2,18 +2,15 @@
 <% if @current_user.id == @user.id %>
   <%= link_to "New Post", "/posts/new" %>
 <% end %>
-<% @posts.each do |post| %>
+<% Post.includes(:user).where("author_id = #{@user.id}").references(:user).each do |post| %>
   <div class='post-ctr'>
     <%= render partial: 'partials/post', locals: { post: post, short: true } %>
-    <% if post.comments.length > 0 %>
+    <% if Comment.includes(:post).where("post_id = #{post.id}").references(:post).count > 0 %>
       <div class='comments'>
         <% post.recent_comments.each do |comment| %>
           <%= render partial: 'partials/comment', locals: { comment: comment } %>
         <% end %>
       </div>
-    <% end %>
-    <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
-      <button type='button'>See this post</button>
     <% end %>
   </div>
 <% end %>

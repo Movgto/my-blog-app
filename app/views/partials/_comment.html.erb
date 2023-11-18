@@ -1,5 +1,5 @@
 <div class='comment'>
-  <h2><%= comment.user.name %>: </h2>
+  <h2><%= User.find(comment["user_id"]).name %>: </h2>
   <p><%= comment.text %></p>
   <p><%= comment.created_at.strftime('%a %d %b %Y') %></p>
 </div>

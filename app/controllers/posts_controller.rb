@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @posts = User.find(params[:id]).posts
+    @posts = Post.includes(:user).where("author_id = #{@user.id}").references(:user)
     @current_user = current_user
   end
 

@@ -1,16 +1,18 @@
-<div class='post-body'>
-  <div class='post-header'>
-    <h2><%= "#{post.title} by #{post.author.name}" %></h2>
+<%= link_to "/users/#{post.author_id}/posts/#{post.id}", class: 'post-nav-link' do %>
+  <div class='post-body'>
+    <div class='post-header'>
+      <h2><%= "#{post.title} by #{post.author.name}" %></h2>
+    </div>
+    <p class='post-text'>
+      <% if short && post.text.split(' ').length > 15 %>
+        <%= post.text.split(' ').slice(0,15).join(' ') %>...
+      <% else %>
+        <%= post.text %>
+      <% end %>
+    </p>
+    <p class='post-counters'>
+      <%= "Comments: #{post[:comments_counter]}" %><br>
+      <%= "Likes: #{post[:likes_counter]}" %>
+    </p>
   </div>
-  <p class='post-text'>
-    <% if short && post.text.split(' ').length > 15 %>
-      <%= post.text.split(' ').slice(0,15).join(' ') %>...
-    <% else %>
-      <%= post.text %>
-    <% end %>
-  </p>
-  <p class='post-counters'>
-    <%= "Comments: #{post[:comments_counter]}" %><br>
-    <%= "Likes: #{post[:likes_counter]}" %>
-  </p>
-</div>
+<% end %>
