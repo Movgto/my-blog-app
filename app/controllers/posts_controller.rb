@@ -4,7 +4,15 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:id])
     @posts = Post.includes(:user).where("author_id = #{@user.id}").references(:user)
+<<<<<<< Updated upstream
     @current_user = current_user
+=======
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
+>>>>>>> Stashed changes
   end
 
   def show
@@ -51,6 +59,9 @@ class PostsController < ApplicationController
     comment = Comment.new(user: current_user, post: @post, text: params[:comment][:text])
     return unless comment.save
 
-    redirect_to "/users/#{current_user.id}/posts/#{@post.id}"
+    respond_to do |format|
+      format.html { redirect_to "/users/#{current_user.id}/posts/#{@post.id}" }
+      format.json { render json: @post }
+    end
   end
 end
