@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   alias_attribute :author, :user
   belongs_to :user, foreign_key: 'author_id'
-  has_many :comments
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :title, presence: true
   validates :title, length: { maximum: 250 }
